@@ -214,7 +214,7 @@ Here's an example of how Containers are generated:
 
 "In a TODO App, the 'Task', 'User' and 'Calendar' objects each would live in a different Container, were each has its own Routes, Controllers, Models, Exceptions, etc. And each Container is responsible for receiving requests and returning responses from whichever supported UI (Web, API..)."
 
-It's advised to use a Single Model per Container, however in some cases you may need more than a single Model and that's totoally fine. 
+It's advised to use a Single Model per Container, however in some cases you may need more than a single Model and that's totally fine. 
 (Even if you have a single Model you could also have Values "AKA Value Objects" (Values are similar to Models but that do not get represented in the DB on their own tables but as data on the Models) these objects get built automatically after their data is fetched from the DB such as Price, Location, Time...)
 
 Just keep in mind two Models means two Repositories, two Transformers, etc.
@@ -314,7 +314,7 @@ To avoid having tens of containers on the root of your containers folder, you ca
 The basic definition of a Section is a folder that contains related Containers. However the benifits are huge. Think of Sections as bounded context, where each section represents a portion of your system. 
 
 Example: if you're building a racing game like Need for Speed, you may have the following two sections: the Race Section and the Lobby Section, where each section contains a Car Container and a Car Model inside it, but with different properties and functions. 
-In this example the Car Model of the Race section can contain the business logic for accelerating and controlling the car, while the Car Model of the Lobby Section contains the business logic for customizaing the car before the race.
+In this example the Car Model of the Race section can contain the business logic for accelerating and controlling the car, while the Car Model of the Lobby Section contains the business logic for customizing the car before the race.
 
 Sections allows separating large Model into smaller ones. And they can provide boundaries for different Models in your system.
 
@@ -486,7 +486,7 @@ The Controllers concept is the same as in MVC *(They are the C in MVC)*, but wit
 - Controllers CAN be called by Routes Endpoints only.
 - Every Container UI folder (Web, API, CLI) will have its own Controllers.
 
-You may wonder why we need the Controller! when we can directly call the Action from the Route. The Controller layer helps making the Action reusable in multiple UI's (Web & API), since it doesn't build a response, and that reduces the amount of code duplication accross different UI's.
+You may wonder why we need the Controller! when we can directly call the Action from the Route. The Controller layer helps making the Action reusable in multiple UI's (Web & API), since it doesn't build a response, and that reduces the amount of code duplication across different UI's.
 
 Here's an example below:
 
@@ -931,7 +931,7 @@ In Porto each component expect the same type of input and output, which makes te
 The Porto structure itself makes writing automated tests a smooth process. As it has a `tests` folder at the root of each Container for contaning the unit tests of your Tasks.
 And a `tests` folder in each UI folder for contaning the functional tests (for testing each UI's separately).
 
-The secret of making the testing and debugging easy, is not onnly in the organization of the tests and pre defined responsiblity of the components but also in the decoupling of your code.
+The secret of making the testing and debugging easy, is not only in the organization of the tests and pre defined responsiblity of the components but also in the decoupling of your code.
 
 ***
 
