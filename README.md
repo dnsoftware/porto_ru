@@ -224,7 +224,7 @@ Porto управляет сложностью проблемы, разбивая
 И каждый контейнер отвечает за получение запросов и возврат ответов от любого поддерживаемого пользовательского интерфейса (Web, API..)."
 
 Рекомендуется использовать одну Модель для каждого Контейнера, однако в некоторых случаях вам может потребоваться больше, чем одна Модель, и это совершенно нормально. 
-(Даже если у вас есть одна Модель, у вас также могут быть значения (Values) "также известные как Объекты значений (Value Objects)" 
+(Даже если у вас есть одна Модель, у вас также могут быть значения (Values) "также известные как Объекты-Значения (Value Objects)" 
  (Values аналогичны моделям, но не представлены в базе данных в их собственных таблицах, а как данные в Моделях), эти объекты создаются автоматически после того как 
  их данные извлекаются из БД, такие как Цена, Местоположение, Время ...)
 
@@ -346,20 +346,20 @@ Container 2
 
 
 <a id="Components"></a>
-# Components
+# Компоненты
 
-In the Container layer there's a set of `Components` "Classes" with predefined responsibilities. 
+На уровне Контейнера есть набор `Компонентов` "Классы" с предопределенными обязанностями. 
 
-Every single piece of code you write should live in a Component (class function). Porto defines a huge list of those Components for you, with a set guidelines to follow when using them, to keep the development process smooth.
+Каждый отдельный фрагмент кода, который вы пишете, должен находиться в Компоненте (функции класса). Porto определяет для вас огромный список этих Компонентов с набором рекомендаций, которым следует следовать при их использовании, чтобы процесс разработки проходил гладко.
 
-Components ensures consistency and make your code easier to maintain as you already know where each piece of code should be found.
+Компоненты обеспечивают согласованность и упрощают обслуживание вашего кода, поскольку вы уже знаете, где должен быть найден каждый фрагмент кода.
 
 
 <a id="Components-Types"></a>
-### Components Types
+### Типы Компонентов
 
-Every Container consists of a number of Components, in **Porto** the Components are split into two Types:
-`Main Components` and `Optional Components`.
+Каждый Контейнер состоит из нескольких компонентов, в **Porto** Компоненты разделены на два типа:
+`Основные Компоненты` and `Дополнительные Компоненты`.
 
 
 
@@ -372,15 +372,15 @@ Every Container consists of a number of Components, in **Porto** the Components 
 
 
 <a id="Main-Components"></a>
-## 1) Main Components
+## 1) Основные Компоненты
 
-You must use these Components as they are essential for almost all types of Web Apps:
+Вы должны использовать эти компоненты, поскольку они необходимы практически для всех типов веб-приложений:
 
-Routes - Controllers - Requests - Actions - Tasks - Models - Views - Transformers.
+Маршруты (Routes) - Контроллеры (Controllers) - Запросы (Requests) - Действия (Actions) - Задачи (Tasks) - Модели (Models) - Шаблоны (Views) - Преобразователи (Transformers).
 
-> **Views:** should be used in case the App serves HTML pages.
+> **Шаблоны:** следует использовать в случае, если приложение обслуживает HTML-страницы.
 > <br>
-> **Transformers:** should be used in case the App serves JSON or XML data.
+> **Преобразователи (Transformers):** следует использовать в случае, если приложение обслуживает данные JSON или XML.
 
 
 
@@ -393,7 +393,7 @@ Routes - Controllers - Requests - Actions - Tasks - Models - Views - Transformer
 
 
 <a id="Components-Interaction-Diagram"></a>
-### 1.1) Main Components Interaction Diagram
+### 1.1) Схема взаимодействия Основных Компонентов
 
 ![](/assets/porto_container_interactions.png)
 
