@@ -1,9 +1,9 @@
-# Porto (Software Architectural Pattern)
+# Porto (Архитектурный шаблон)
 
 ![](/assets/porto-logo.png)
 
 
-## Welcome to Porto
+## Добро пожаловать в Porto
 
 - [Вступление](#Introduction)
 - [Приступая к работе](#Getting-Started)
@@ -28,7 +28,7 @@
 - [Типичная структура контейнера](#Typical-Container-Structure)
 - [Атрибуты Качества Porto](#Quality-Attributes)
 - [Реализации (Построены на базе Porto)](#Implementations-Projects)
-- [Отзывы и вопросы](#Feedback)
+- [Обратная связь и вопросы](#Feedback)
 
 
 
