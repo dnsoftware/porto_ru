@@ -162,15 +162,16 @@ Porto предлагает гибкость, позволяющую начина
 
 <a id="Ship-Layer"></a>
 
-## 1) Ship Layer
+## 1) Слой Корабля
 
-The Ship layer, contains the Parent "Base" classes *(classes extended by every single component)* and some Utility Code.
+Слой "Корабль" содержит родительские "Базовые" классы *(классы, расширяемые каждым отдельным компонентом)* и некоторый Служебный Код.
 
-The Parent classes "Base classes" of the Ship layer gives full control over the Container's Components *(for example adding a function to the Base Model class, makes it available in every Model in your Containers).*
+Родительские классы «Базовые классы» слоя «Корабль» предоставляют полный контроль над Компонентами Контейнера (например, добавление функции к классу Базовой Модели делает его доступным в каждой Модели в ваших Контейнерах).
 
-The Ship layer, also plays an important role in separating the Application code from the Framework code. Which facilitates upgrading the Framework without affecting the Application code.
+Слой «Корабль» также играет важную роль в отделении кода приложения от кода фреймворка. Это облегчает обновление Фреймворка, не затрагивая код приложения.
 
-In Porto the Ship layer is very slim, it does NOT contain common reusable functionalities such as Authentication or Authorization, since all these functionalities are provided by Containers, to be replaced whenever needed. Giving the developers more flexibility.
+В Porto уровень «Корабль» очень тонкий, он НЕ содержит общих многоразовых функций, таких как Аутентификация или Авторизация, 
+поскольку все эти функции предоставляются контейнерами, которые можно заменять по мере необходимости. Предоставляя разработчикам большей гибкости.
 
 
 
