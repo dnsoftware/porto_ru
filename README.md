@@ -56,12 +56,13 @@ Porto - отличный вариант для средних и крупных 
 
 <br>
 
-It started as an experimental architecture, aiming at solving the common problems web developers face, when building large projects.
-
-*Feedbacks & Contributions are much appreciated.*
+Это начиналось как экспериментальная архитектура, направленная на решение общих проблем, с которыми сталкиваются веб-разработчики при создании крупных проектов.
 
 
-> "Simplicity is prerequisite for reliability.” — Edsger Dijkstra
+*Мы очень ценим отзывы и предложения.*
+
+
+> "Простота является необходимым условием надежности.” — Эдсгер Дейкстра
 
 
 
@@ -73,19 +74,19 @@ It started as an experimental architecture, aiming at solving the common problem
 
 
 <a id="Getting-Started"></a>
-# Getting Started
+# Приступая к работе
 
 
 
 
 <a id="Layers-Overview"></a>
-## Layers Overview
+## Обзор слоев
 
-At its core Porto consists of 2 layers "folders" `Containers` & `Ship`. 
+По своей сути Порто состоит из 2-х слоев "папок" `Контейнеры` & `Корабль`. 
 
-These layers can be created anywhere inside any framework of choice.
+Эти слои могут быть созданы в любом месте в любой выбранной структуре.
 
-*(Example: in Laravel or Rails they can be created in the `app/` directory or in a new `src/` directory at the root.)*
+*(Пример: в Laravel или Rails они могут быть созданы в `app/` директории или в новой `src/` директории в корне.)*
 
 
 
