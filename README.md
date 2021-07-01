@@ -183,20 +183,23 @@ Porto предлагает гибкость, позволяющую начина
 
 
 
-### Ship Structure
+### Структура Корабля
 
-The Ship layer, contains the following types of codes:
+Уровень корабля содержит следующие типы кода:
 
-- **The Core Code**: is the engine of the ship, that auto-register and auto-load all your Container's Components to boot your Application. It contains most of the magical code that handles everything that is not part of your business logic. And mostly contains code that facilitate the development by extending the framework features.
-- **The Containers shared code**
-	- **Parents Classes**: the base classes of each Component in your Container. (Adding functions to the parent classes makes them available in every Container). Parents are made to contain shared code between your Containers.
-	- **Generic Classes**: the reusable features and classes which can be used by every Container. Such as, Global Exceptions, Application Middleware's, Global Config files, etc.
+- **Код Ядра**: это двигатель корабля, который автоматически регистрирует и автоматически загружает все компоненты вашего Контейнера для загрузки вашего Приложения. Он содержит большую часть магического кода, который обрабатывает все, что не является частью вашей бизнес-логики. И в основном содержит код, который облегчает разработку за счет расширения возможностей платформы.
+- **Общий код Контейнеров**
+	- **Родительские классы**: базовые классы каждого компонента в вашем контейнере. (Добавление функций в родительские классы делает их доступными в каждом контейнере). Родители созданы, чтобы содержать общий код для ваших Контейнеров.
+	- **Универсальные Классы**: многоразовые функции и классы, которые могут использоваться каждым Контейнером. Например, глобальные исключения, миддлвары приложения, файлы глобальной конфигурации и т.д.
 
-Note: All the Container's Components MUST extend or inherit from the Ship layer *(in particular the Parent's folder)*.
+Примечание: Все компоненты контейнера ДОЛЖНЫ расширяться или наследоваться от уровня «Корабль» *(в частности, от родительской папки)*.
 
 When separating the **Core** to an external package, the Ship Parents should extend from the Core Parents (can be named Abstract, since most of the them supposed to be Abstract Classes).
 The Ship Parents holds your custom Application shared business logic, while the Core Parents (Abstracts) holds your framework common code, basically anything that is not business logic should be hidden from the actual Application being developed.
 
+При отделении **Ядра** в отдельный пакет Корабль-Родители должны расширять Ядро-Родителей (могут быть названы Абстрактными, поскольку большинство из них должны быть Абстрактными Классами). 
+Корабль-Родители содержат общую бизнес-логику вашего пользовательского приложения, в то время как Ядро-Родители (Абстрактные) содержат общий код вашей платформы, 
+в основном все, что не является бизнес-логикой, должно быть скрыто от разрабатываемого приложения.
 
 <br>
 
