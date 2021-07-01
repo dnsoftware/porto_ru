@@ -42,16 +42,17 @@
 <a id="Introduction"></a>
 # Вступление
 
-**Porto** is a modern software architectural pattern, consisting of guidelines, principles and patterns to help developers organize their code in a highly maintainable and reusable way.
+**Porto** это современный архитектурный шаблон программного обеспечения, состоящий из методических рекомендаций, принципов и шаблонов, которые помогают разработчикам 
+организовать свой код максимально удобным и многократно используемым способом.
 
-Porto is a great option for medium to large sized web projects, as they tend to have higher complexity over time. 
+Porto - отличный вариант для средних и крупных веб-проектов, поскольку со временем они, как правило, становятся более сложными. 
 
-With Porto developers can build super scalable monolithics, which can be easily splitted into multiple micro-services whenever needed.
-While enabling the reusability of the business logic *(Application Features)*, across multiple projects.
+С помощью Porto разработчики могут создавать супер масштабируемые монолитные системы, которые при необходимости можно легко разделить на несколько микросервисов.
+При этом обеспечивается возможность повторного использования бизнес-логики (функций приложения) в нескольких проектах.
 
-**Porto** inherits concepts from the **DDD** *(Domain Driven Design)*, **Modular**, **Micro Kernel**, **MVC** *(Model View Controller)*, **Layered** and **ADR** *(Action Domain Responder)* architectures. 
+**Porto** унаследовал концепции из **DDD** *(Domain Driven Design)*, **Modular**, **Micro Kernel**, **MVC** *(Model View Controller)*, **Layered** and **ADR** *(Action Domain Responder)* архитектур. 
 <br>
-And it adheres to a list of convenient design principles such as **SOLID**, **OOP**, **LIFT**, **DRY**, **CoC**, **GRASP**, **Generalization**, **High Cohesion** and **Low Coupling**.
+И он придерживается списка удобных принципов дизайна, таких как **SOLID**, **OOP**, **LIFT**, **DRY**, **CoC**, **GRASP**, **Generalization**, **High Cohesion** и **Low Coupling**.
 
 <br>
 
