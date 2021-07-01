@@ -194,8 +194,6 @@ Porto предлагает гибкость, позволяющую начина
 
 Примечание: Все компоненты контейнера ДОЛЖНЫ расширяться или наследоваться от уровня «Корабль» *(в частности, от родительской папки)*.
 
-When separating the **Core** to an external package, the Ship Parents should extend from the Core Parents (can be named Abstract, since most of the them supposed to be Abstract Classes).
-The Ship Parents holds your custom Application shared business logic, while the Core Parents (Abstracts) holds your framework common code, basically anything that is not business logic should be hidden from the actual Application being developed.
 
 При отделении **Ядра** в отдельный пакет Корабль-Родители должны расширять Ядро-Родителей (могут быть названы Абстрактными, поскольку большинство из них должны быть Абстрактными Классами). 
 Корабль-Родители содержат общую бизнес-логику вашего пользовательского приложения, в то время как Ядро-Родители (Абстрактные) содержат общий код вашей платформы, 
@@ -213,24 +211,26 @@ The Ship Parents holds your custom Application shared business logic, while the 
 
 <a id="Containers-Layer"></a>
 
-## 2) Containers Layer
+## 2) Слой Контейнеров
 
-Porto manages the complexity of a problem by breaking it down to smaller manageable Containers.
+Porto управляет сложностью проблемы, разбивая ее на более мелкие управляемые контейнеры.
 
-The Containers layer is where the Application specific business logic lives *(Application features/functionalities)*. You will spend 90% of your time at this layer, creating Components.
+Слой Контейнеров - это место, где живет бизнес-логика приложения *(Особенности приложения / функциональность)*. Вы будете проводить 90% своего времени на этом слое, создавая компоненты.
 
-Here's an example of how Containers are generated:
+Вот пример того, как создаются Контейнеры:
 
-"In a TODO App, the 'Task', 'User' and 'Calendar' objects each would live in a different Container, were each has its own Routes, Controllers, Models, Exceptions, etc. And each Container is responsible for receiving requests and returning responses from whichever supported UI (Web, API..)."
+"В приложении объекты "Задача", "Пользователь" и "Календарь" будут находиться в разных контейнерах, 
+каждый из которых имеет свои собственные Маршруты (Routes), Контроллеры (Controllers), Модели (Models), Исключения (Exceptions) и т.д. 
+И каждый контейнер отвечает за получение запросов и возврат ответов от любого поддерживаемого пользовательского интерфейса (Web, API..)."
 
-It's advised to use a Single Model per Container, however in some cases you may need more than a single Model and that's totally fine. 
-(Even if you have a single Model you could also have Values "AKA Value Objects" (Values are similar to Models but that do not get represented in the DB on their own tables but as data on the Models) these objects get built automatically after their data is fetched from the DB such as Price, Location, Time...)
+Рекомендуется использовать одну Модель для каждого Контейнера, однако в некоторых случаях вам может потребоваться больше, чем одна Модель, и это совершенно нормально. 
+(Даже если у вас есть одна Модель, у вас также могут быть значения (Values) "также известные как Объекты значений (Value Objects)" 
+ (Values аналогичны моделям, но не представлены в базе данных в их собственных таблицах, а как данные в Моделях), эти объекты создаются автоматически после того как 
+ их данные извлекаются из БД, такие как Цена, Местоположение, Время ...)
 
-Just keep in mind two Models means two Repositories, two Transformers, etc.
-Unless you want to use both Models always together, do split them into 2 Containers.
+Просто имейте в виду, что две Модели означают два Репозитория, два Преобразователя (Transformers) и т.д. Если вы не хотите всегда использовать обе модели вместе, разделите их на 2 контейнера.
 
-Note: if you have high dependecies between two containers by nature, than placing them in the same Section would make reusing them easier in other projects.
-
+Примечание: если у вас есть сильные зависимости между двумя контейнерами по своей природе, то размещение их в одной Секции упростит их повторное использование в других проектах.
 
 
 
@@ -241,7 +241,7 @@ Note: if you have high dependecies between two containers by nature, than placin
 
 
 <a id="Containers-Structure"></a>
-### Basic Containers Structure
+### Базовая структура Контейнеров
 
 ```
 Container 1
@@ -290,16 +290,16 @@ Container 2
 
 
 <a id="Containers-Interactions"></a>
-### Containers Communications & Relations
+### Взаимодействие Контейнеров и Связи
 
-- A Container MAY depends on one or many other Containers. *(Preferably wihin the same section.)*
-- A Controller MAY call Tasks from another Container.
-- A Model MAY have a relationship with a Model from another Containers.
-- Other forms of communications are also possible, such as Listening to Events fired by other Containers.
+- Контейнер МОЖЕТ зависеть от одного или многих других контейнеров. *(Желательно в том же разделе.)*
+- Контроллер МОЖЕТ вызывать задачи из другого контейнера.
+- Модель МОЖЕТ иметь связь с моделью из другого контейнера.
+- Возможны также другие формы связи, такие как Прослушивание Событий, запускаемых другими Контейнерами.
 
-*If you use Event based communcations between containers, you could use the same mechanism after spliting your code base into multi services.*
+*Если вы используете обмен данными между контейнерами на основе событий, вы можете использовать тот же механизм после разделения кодовой базы на несколько служб (сервисов).* 
 
-> Note: If you're not familiar with separating your code into Modules/Domains, or for some reason you don't prefer that approach. You can create your entire Application in a single Container. (Not recommended but absolutely possible).
+> Примечание. Если вы не знакомы с разделением кода на модули / домены или по какой-то причине не предпочитаете такой подход. Вы можете создать все свое приложение в одном контейнере. (Не рекомендуется, но абсолютно возможно).
 
 
 
@@ -312,22 +312,27 @@ Container 2
 
 
 <a id="Containers-Sections"></a>
-### Containers Sections
+### Секции Контейнеров
 
-Container `Sections` are another very important aspect in the Porto architecture.
+Контейнерные "Секции" - еще один очень важный аспект в архитектуре Porto.
 
-*Think of a Section as a rows of containers on a cargo ship. Well organized containers in rows, speeds up the loading and unloading of related containers for a specific customer.*
+*Думайте о секции как о рядах контейнеров на грузовом корабле. Хорошо организованные контейнеры в рядах, ускоряют погрузку и разгрузку связанных контейнеров для конкретного клиента.*
 
-To avoid having tens of containers on the root of your containers folder, you can group related Containers into Sections.
+Чтобы избежать наличия десятков контейнеров в корне вашей папки с контейнерами, вы можете сгруппировать связанные контейнеры в Секции.
 
-The basic definition of a Section is a folder that contains related Containers. However the benifits are huge. Think of Sections as bounded context, where each section represents a portion of your system. 
+Секция - это по сути папка, содержащая связанные контейнеры. Тем не менее преимущества огромны. Думайте о Секциях как о ограниченном контексте, где каждый раздел представляет собой часть вашей системы.
 
-Example: if you're building a racing game like Need for Speed, you may have the following two sections: the Race Section and the Lobby Section, where each section contains a Car Container and a Car Model inside it, but with different properties and functions. 
-In this example the Car Model of the Race section can contain the business logic for accelerating and controlling the car, while the Car Model of the Lobby Section contains the business logic for customizing the car before the race.
+Пример: если вы создаете гоночную игру, такую как Need for Speed, у вас могут быть следующие два раздела: Секция Гонки и Секция Lobby, 
+где каждая секция содержит Контейнер Автомобиля и Модель Автомобиля внутри, но с разными свойствами и функциями. 
+В этом примере Модель Автомобиля в Секции Гонки может содержать бизнес-логику для ускорения и управления автомобилем, 
+в то время как Модель Автомобиля в Секции Lobby содержит бизнес-логику для настройки автомобиля перед гонкой.
 
-Sections allows separating large Model into smaller ones. And they can provide boundaries for different Models in your system.
+Разделы позволяют разделить большую Модель на более мелкие. И они могут предоставить границы для различных Моделей в вашей системе.
 
-If you prefer simplicity or you have only single team working on the project, you can have no Sections at all (where all Containers live in the containers folder) which means your project is a single section. In this case if the project grew quickly and you decided you need to start using sections, you can make a new project also with a single section, this is known as Micro-Services. In Micro-Services each section "project portion" live in its own project (repository) and they can communicate over the network usually using the HTTP protocol.
+Если вы предпочитаете простоту или у вас только одна команда, работающая над проектом, вы можете вообще не иметь Секций (где все контейнеры находятся в папке контейнеров), 
+что означает, что ваш проект представляет собой одну Секцию. В этом случае, если проект быстро растет и вы решили, что вам нужно начать использовать Секции, 
+вы можете создать новый проект также с одним разделом, это называется Микросервисами. В Микросервисах каждая секция «часть проекта» находится 
+в своем собственном проекте (репозитории), и они могут обмениваться данными по сети, как правило, с использованием протокола HTTP. 
 
 <br>
 
