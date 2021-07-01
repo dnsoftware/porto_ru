@@ -359,7 +359,7 @@ Container 2
 ### Типы Компонентов
 
 Каждый Контейнер состоит из нескольких компонентов, в **Porto** Компоненты разделены на два типа:
-`Основные Компоненты` and `Дополнительные Компоненты`.
+`Основные Компоненты` и `Дополнительные Компоненты`.
 
 
 
@@ -408,19 +408,20 @@ Container 2
 
 
 <a id="Request-Life-Cycle"></a>
-### 1.2) The Request Life Cycle
+### 1.2) Жизненный цикл Запроса
 
-*A basic API call scenario, navigating through the main components:*
+*Базовый сценарий вызова API, навигация по основным компонентам:*
 
-1. **User** calls an `Endpoint` in a `Route` file.
-2. `Endpoint` calls a `Middleware` to handle the Authentication.
-3. `Endpoint` calls its `Controller` function.
-4. `Request` injected in the `Controller` automatically applies the request validation & authorization rules.
-5. `Controller` calls an `Action` and pass each `Request` data to it.
-6. `Action` do the business logic, *OR can call as many `Tasks` as needed to do the reusable subsets of the business logic*.
-7. `Tasks` do a reusable subsets of the business logic (A `Task` can do a single portion of the main Action).
-8. `Action` prepares data to be returned to the `Controller`, *some data can be collected from the `Tasks`*.
-9. `Controller` builds the response using a `View` (or `Transformer`) and send it back to the **User**.
+1. **Пользователь** вызывает `Endpoint` в файле `Маршрута`.
+2. `Endpoint` вызывает `Посредника (Middleware)` для обработки Аутентификации.
+3. `Endpoint` вызывает соответствующий `Контроллер` .
+4. `Запрос` внедренный в `Контроллер` автоматически применяет валидацию и правила авторизации.
+5. `Контроллер` вызывает `Действие (Action)` передает ему данные `Завпроса`.
+6. `Действие (Action)` выполняет бизнес-логику, *ИЛИ может вызывать столько Задач (Tasks), сколько необходимо для повторного использования подмножеств бизнес-логики. 
+7. `Задачи (Tasks)` выполняют многократно используемые подмножества бизнес-логики (`Задача (Task)` может выполнять единственную часть основного Действия (Action). 
+8. `Действие (Action)` подготавливает данные для возврата в Контроллер, *некоторые данные могут быть собраны из Задач (Tasks)*. 
+9. `Контроллер` создает ответ используя `Шаблон (View)` (или `Преобразователь (Transformer)`) и отправляет его назад **Пользователю**
+
 
 
 
@@ -432,9 +433,9 @@ Container 2
 
 
 <a id="Components-Details"></a>
-### 1.3) Main Components Definitions & Principles
+### 1.3) Основные Компоненты, определения и принципы
 
-> Click on the arrows below to read about each component.
+> Кликайте по стрелкам ниже, чтобы узнать о каждом компоненте.
 
 
 
@@ -448,24 +449,25 @@ Container 2
 
 <a id="Routes"></a>
 <Details>
-<Summary>Routes</Summary>
+<Summary>Маршруты (Routes)</Summary>
 <br>
 
-Routes are the first receivers of the HTTP requests.
+Маршруты являются первыми получателями HTTP-запросов.
 
-The Routes are responsible for mapping all the incoming HTTP requests to their controller's functions.
+Маршруты отвечают за сопоставление всех входящих HTTP-запросов со своим контроллером.
 
-The Routes files contain Endpoints (URL patterns that identify the incoming request).
+Файлы Маршрутов содержат конечные точки (Endpoints) (шаблоны URL - адресов, идентифицирующие входящий запрос).
 
-When an HTTP request hits your Application, the Endpoints match with the URL pattern and make the call to the corresponding Controller function.
+Когда в ваше приложение поступает HTTP-запрос, конечные точки (Endpoints) совпадают с шаблоном URL-адреса и вызывают соответствующую функцию контроллера.
 
-#### Principles:
-- There are three types of Routes, API Routes, Web Routes and CLI Routes.
-- The API Routes files SHOULD be separated from the Web Routes files, each in its own folder.
-- The Web Routes folder will contain only the Web Endpoints, (accessible by Web browsers); And the API Routes folder will contain only the API Endpoints, (accessible by any consumer App).
-- Every Container SHOULD have its own Routes.
-- Every Route file SHOULD contain a single Endpoint.
-- The Endpoint job is to call a function on the corresponding Controller once a request of any type is made. (It SHOULD NOT do anything else).
+
+#### Принципы:
+- Существует три типа маршрутов: Маршруты API, Web-Маршруты и Маршруты CLI.
+- Файлы Маршрутов API ДОЛЖНЫ быть отделены от файлов Web-маршрутов, каждый в своей отдельной папке.
+- Папка Web-маршрутов будет содержать только Web Endpoints (доступные веб-браузерам); А папка API-Маршрутов будет содержать только API Endpoints (доступные любому пользовательскому приложению).
+- У каждого Контейнера ДОЛЖНЫ быть свои Маршруты.
+- Каждый файл Маршрута ДОЛЖЕН содержать одну конечную точку (Endpoint).
+- Задача конечной точки (Endpoint) состоит в том, чтобы вызвать функцию в соответствующем Контроллере после выполнения запроса любого типа. (НЕ ДОЛЖЕНО делаться ничего другого).
 
 ***
 
@@ -482,32 +484,34 @@ When an HTTP request hits your Application, the Endpoints match with the URL pat
 
 <a id="Controllers"></a>
 <Details>
-<Summary>Controllers</Summary>
+<Summary>Контроллеры</Summary>
 <br>
 
-Controllers are responsible for validating the request, serving the request data and building a response. *Validation and response, happens in separate classes, but triggered from the Controller*.
+Контроллеры несут ответственность за валидацию запроса, обслуживание данных запроса и построение ответа. *Проверка и ответ происходят в отдельных классах, но запускаются контроллером*.
 
-The Controllers concept is the same as in MVC *(They are the C in MVC)*, but with limited and predefined responsibilities.
+Концепция контроллеров такая же, как и в MVC (это C в MVC), но с ограниченными и предопределенными обязанностями.
 
-#### Principles:
-- Controllers SHOULD NOT know anything about the business logic or about any business object.
-- A Controller SHOULD only do the following jobs:
-   1. Reading a Request data (user input)
-   2. Calling an Action (and passing request data to it)
-   3. Building a Response (usually build response based on the data collected from the Action call)
-- Controllers SHOULD NOT have any form of business logic. (It SHOULD call an Action to perform the business logic).
-- Controllers SHOULD NOT call Container Tasks. They MAY only call Actions. (And then Actions can call Container Tasks).
-- Controllers CAN be called by Routes Endpoints only.
-- Every Container UI folder (Web, API, CLI) will have its own Controllers.
+#### Принципы:
+- Контроллеры НЕ МОГУТ ничего знать о бизнес-логике или о каких-либо бизнес-объектах.
+- Контроллер ДОЛЖЕН выполнять только следующие работы:
+   1. Чтение данных Запроса (Request) (ввод пользователя)
+   2. Вызов Действия (Action) (и передача ему данных запроса)
+   3. Создание Ответа (Response) (обычно ответ создается на основе данных, собранных в результате вызова Действия (Action))
+- Контроллеры НЕ МОГУТ иметь какую-либо бизнес-логику. (НУЖНО вызывать Действие (Action) для выполнения бизнес-логики).
+- Контроллеры НЕ МОГУТ вызывать Задачи (Tasks) Контейнера. Они МОГУТ вызывать только Действия (Actions). (И потом Действия (Actions) могут вызывать Задачи (Tasks) Контейнера).
+- Контроллеры МОГУТ быть вызваны только конечными точками (Endpoints) Маршрутов.
+- Каждая папка пользовательского интерфейса (UI) Контейнера (Web, API, интерфейс командной строки (CLI)) будет иметь свои собственные контроллеры.
 
-You may wonder why we need the Controller! when we can directly call the Action from the Route. The Controller layer helps making the Action reusable in multiple UI's (Web & API), since it doesn't build a response, and that reduces the amount of code duplication across different UI's.
-
-Here's an example below:
+Вы можете спросить, зачем нам Контроллер! когда мы можем напрямую вызвать действие из маршрута. 
+Слой контроллера помогает сделать действие повторно используемым в нескольких пользовательских интерфейсах (Web-интерфейс и API), 
+поскольку он не создает ответа, и это уменьшает количество дублирования кода в разных пользовательских интерфейсах.
+ 
+Вот пример ниже:
 
 - UI (Web): Route `W-R1` -> Controller `W-C1` -> Action `A1`.
 - UI (API): Route `A-R1` -> Controller `A-C1` -> Action `A1`.
 
-As you can see in the example above the Action `A1` was used by both routes `W-R1` and `A-R1`, with the help of the Controllers layer that lives in each UI.
+Как вы можете видеть в приведенном выше примере, действие A1 использовалось обоими маршрутами W-R1 и A-R1 с помощью слоя Контроллера, который находится в каждом пользовательском интерфейсе.
 
 ***
 
