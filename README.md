@@ -102,16 +102,14 @@ Porto - отличный вариант для средних и крупных 
 ![](/assets/porto_visual_diagram.png)
 
 
-Before explaining where each type of code should be placed, let's understand the different levels of code we will have:
-
-#### Code Levels
-
-- **Low-level code**: the framework code (implements basic operations like reading files from a disk, or interacting with a database). Usually lives in the Vendor directory.
-- **Mid-level code**: the application general code (implements functionality that serves the High-level code. And it relies on the Low-level code to function). Should be in the `Ship` layer.
-- **High-level code**: the business logic code (encapsulates complex logic and relies on the Mid-level code to function). Should be in the `Containers` layer.
+Прежде чем объяснить, где должен размещаться код каждого типа, давайте разберемся в различных уровнях кода, которые у нас будут:
 
 
+#### Уровни кода
 
+- **Низкоуровневый код**: код фреймворка (реализует основные операции, такие как чтение файлов с диска или взаимодействие с базой данных). Обычно живет в каталоге поставщиков (vendors).
+- **Среднеуровневый код**: общий код приложения (реализует функциональность, которая обслуживает код высокого уровня. И он полагается на низкоуровневый код для работы). Должен быть в слое "Корабль".
+- **Высокоуровневый код**: код бизнес-логики (инкапсулирует сложную логику и для функционирования полагается на код среднего уровня). Должен быть в слое "Контейнеры".
 
 
 
@@ -119,9 +117,13 @@ Before explaining where each type of code should be placed, let's understand the
 
 
 
-### Layers Diagram
+
+
+
+### Схема Слоев
 
 The Containers layer (cargo containers) `>> relies >>` on the Ship layer (cargo ship) `>> relies >>` on the Framework (sea).
+Слой Контейнеров (грузовые контейнеры) >> опирается >> на слой Корабля (грузовой корабль) >> опирается >> на Фреймворк (море).
 
 ![](/assets/porto_layers.png)
 
