@@ -122,7 +122,6 @@ Porto - отличный вариант для средних и крупных 
 
 ### Схема Слоев
 
-The Containers layer (cargo containers) `>> relies >>` on the Ship layer (cargo ship) `>> relies >>` on the Framework (sea).
 Слой Контейнеров (грузовые контейнеры) >> опирается >> на слой Корабля (грузовой корабль) >> опирается >> на Фреймворк (море).
 
 ![](/assets/porto_layers.png)
@@ -136,17 +135,19 @@ The Containers layer (cargo containers) `>> relies >>` on the Ship layer (cargo 
 
 
 
-### Monolithic to "Micro" Services
+### От Монолита к Микро-сервисам
 
-Porto is designed to scale with you! While most companies shift from Monolithic to Micro-Services *(and most recently Serverless)* as they scale up. Porto offers the flexibility to deflate your Monolithic into Micro-Services (or SOA) at any time with the least effort possible.
+Porto создан, чтобы масштабироваться вместе с вами! В то время как большинство компаний переходят от монолита к микро-сервисам *(и в последнее время без серверов)* по мере их расширения. Porto предлагает гибкость, позволяющую превратить ваш монолитный продукт в микроуслуги (или SOA) в любое время с наименьшими возможными усилиями.
 
-In Porto terms a Monolithic is equal to one cargo ship of Containers, while Micro Services is equal to multiple cargo ships of Containers. *(Disregarding their sizes).*
+В терминах Porto Монолит это эквивалент одного грузового корабля с контейнерами, в то время как Микро-сервисы это эквивалент нескольких контейнерных кораблей. *(Независимо от их размеров)*
 
-Porto offers the flexibility to start small with a single well organized Monolithic service and grow whenever you need, by extracting containers into multiple services as your team grows.
+Porto предлагает гибкость, позволяющую начинать с малого, с одной хорошо организованной монолитной службы и расти всякий раз, когда вам это нужно, путем разделения контейнеров на несколько служб по мере роста вашей команды.
 
-As you can imagine operating two or more ships in the sea rather than a single one, will increase the cost of maintenance (two repositories, two CI pipelines,...) but also gives you flexibility, where each ship can run at different speed and direction. This technially translates to each service scaling differently based on the traffic it expect.
+Как вы можете себе представить, эксплуатация двух или более судов в море, а не одного, приведет к увеличению затрат на техническое обслуживание (два репозитория, два CI пайплайна,...), 
+но также даст вам гибкость, когда каждое судно может работать с разной скоростью и направлением. 
+Это технически приводит к тому, что каждая служба масштабируется по-разному в зависимости от ожидаемого трафика.
 
-How services communicate together is completely up to the developers.
+То, как сервисы взаимодействуют друг с другом, полностью зависит от разработчиков.
 
 
 <br>
