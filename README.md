@@ -376,7 +376,7 @@ Container 2
 
 Вы должны использовать эти компоненты, поскольку они необходимы практически для всех типов веб-приложений:
 
-Маршруты (Routes) - Контроллеры (Controllers) - Запросы (Requests) - Действия (Actions) - Задачи (Tasks) - Модели (Models) - Шаблоны (Views) - Преобразователи (Transformers).
+Маршруты (Routes) - Контроллеры (Controllers) - Запросы (Requests) - Действия (Actions) - Задачи (Tasks) - Модели (Models) - Представления (Views) - Преобразователи (Transformers).
 
 > **Шаблоны:** следует использовать в случае, если приложение обслуживает HTML-страницы.
 > <br>
@@ -420,7 +420,7 @@ Container 2
 6. `Действие (Action)` выполняет бизнес-логику, *ИЛИ может вызывать столько Задач (Tasks), сколько необходимо для повторного использования подмножеств бизнес-логики. 
 7. `Задачи (Tasks)` выполняют многократно используемые подмножества бизнес-логики (`Задача (Task)` может выполнять единственную часть основного Действия (Action). 
 8. `Действие (Action)` подготавливает данные для возврата в Контроллер, *некоторые данные могут быть собраны из Задач (Tasks)*. 
-9. `Контроллер` создает ответ используя `Шаблон (View)` (или `Преобразователь (Transformer)`) и отправляет его назад **Пользователю**
+9. `Контроллер` создает ответ используя `Представление (View)` (или `Преобразователь (Transformer)`) и отправляет его назад **Пользователю**
 
 
 
@@ -648,17 +648,18 @@ Container 2
 
 <a id="Models"></a>
 <Details>
-<Summary>Models</Summary>
+<Summary>Модели (Models)</Summary>
 <br>
 
-The Models provide an abstraction for the data, they represent the data in the database. *(They are the M in MVC)*.
+Модели (Models) обеспечивают абстракцию данных, они представляют данные в базе данных. (Это M в MVC).
 
-Models are responsible for how the data should be handled. They make sure that data arrives properly into the backend store (e.g. Database).
+Модели несут ответственность за то, как следует обрабатывать данные. Они следят за тем, чтобы данные поступали правильно в внутреннее хранилище (например, в базу данных).
 
-#### Principles:
-- A Model SHOULD NOT hold business logic, it can only hold the code and data that represents itself. *(it's relationships with other models, hidden fields, table name, fillable attributes,...)*
-- A single Container MAY contain multiple Models.
-- A Model MAY define the Relations between itself and any other Models (in case a relation exist).
+#### Принципы:
+- Модель НЕ ДОЛЖНА содержать бизнес-логику, она может содержать только код и данные, которые представляют себя. 
+*(это отношения с другими Моделями, скрытые поля, имя таблицы, заполняемые атрибуты, ...)*
+- Один Контейнер МОЖЕТ содержать несколько моделей.
+- Модель МОЖЕТ определять Отношения между собой и любыми другими Моделями (в случае, если связь существует).
 
 ***
 
@@ -675,17 +676,17 @@ Models are responsible for how the data should be handled. They make sure that d
 
 <a id="Views"></a>
 <Details>
-<Summary>Views</Summary>
+<Summary>Представления (Views)</Summary>
 <br>
 
-Views contain the HTML served by your application.
+Представления (Views) содержат HTML-код, обслуживаемый вашим приложением.
 
-Their main goal is to separate the application logic from the presentation logic. *(They are the V in MVC)*.
+Их основная цель - отделить логику приложения от логики представления. (Это V в MVC).
 
-#### Principles:
-- Views can only be used from the Web Controllers.
-- Views SHOULD be separated into multiple files and folders based on what they display.
-- A single Container MAY contain multiple Views files.
+#### Принципы:
+- Представления можно использовать только из Web Контроллеров (Web Controllers).
+- Представления ДОЛЖНЫ быть разделены на несколько файлов и папок в зависимости от того, что они отображают.
+- Один Контейнер МОЖЕТ содержать несколько файлов Представлений.
 
 ***
 
@@ -702,22 +703,22 @@ Their main goal is to separate the application logic from the presentation logic
 
 <a id="Transformers"></a>
 <Details>
-<Summary>Transformers</Summary>
+<Summary>Преобразователи (Transformers)</Summary>
 <br>
 
-Transformers (are the short name for Responses Transformers).
+Преобразователи (Transformers) (это сокращенное название от Responses Transformers).
 
-They are equivalent to Views but for JSON Responses. While Views takes data and represent it in HTML, Transformers takes data and represent it in JSON.
+Они эквивалентны Представлениям, но для ответов JSON. В то время как Views принимает данные и представляет их в HTML, Transformers принимает данные и представляет их в JSON.
 
-Transformers are classes responsible for transforming Models into Arrays.
+Преобразователи (Transformers) - это классы, отвечающие за преобразование Моделей в массивы.
 
-Transformers takes a Model or a group of Models "Collection" and converts it to a formatted serializable Array.
+Преобразователи (Transformers) берут модель или группу моделей «коллекцию» и преобразует ее в форматированный сериализуемый массив.
 
-#### Principles:
-- All API responses MUST be formatted via Transformers.
-- Every Model (that gets returned by an API call) SHOULD have a Transformer.
-- A single Container MAY have multiple Transformers.
-- Usually every Model would have a Transformer.
+#### Принципы:
+- Все ответы API ДОЛЖНЫ быть отформатированы с помощью Преобразователей.
+- Каждая Модель (которая возвращается вызовом API) ДОЛЖНА иметь Преобразователь.
+- В одном Контейнере МОЖЕТ быть несколько Преобразователей.
+- Обычно у каждой Модели есть Преобразователь.
 
 ***
 
@@ -734,17 +735,17 @@ Transformers takes a Model or a group of Models "Collection" and converts it to 
 
 <a id="Exceptions"></a>
 <Details>
-<Summary>Exceptions</Summary>
+<Summary>Исключения (Exceptions)</Summary>
 <br>
 
-Exceptions are also a form of output that should be expected (like an API exception) and well defined.
+Исключения (Exceptions) - это также форма вывода, которую следует ожидать (например, исключение API) и которая должна быть четко определена.
 
-#### Principles:
-- There are container Exceptions (live in Containers) and general Exceptions (live in Ship).
-- Tasks, Sub-Tasks, Models and any class in general can throw a very specific Exception.
-- The caller MUST handle all expected Exceptions from the called class.
-- Actions MUST handle all Exceptions, and making sure they don't leak to upper Components, and cause unexpected behaviors.
-- Exceptions names SHOULD be as specific as possible and they SHOULD have a clear descriptive messages.
+#### Принципы:
+- Существуют Исключения Контейнеров (находятся в Контейнерах) и Общие Исключения (находятся в Корабле).
+- Задачи (Tasks), Подзадачи (Sub-Tasks), Модели и любой класс в целом могут вызывать очень конкретное Исключение.
+- Вызывающий ДОЛЖЕН обрабатывать все ожидаемые Исключения от вызываемого класса.
+- Действия (Actions) ДОЛЖНЫ обрабатывать все Исключения и следить за тем, чтобы они не просачивались в Компоненты верхнего уровня и не вызывали неожиданное поведение.
+- Имена исключений ДОЛЖНЫ быть как можно более конкретными и ДОЛЖНЫ иметь четкие описательные сообщения.
 
 ***
 
