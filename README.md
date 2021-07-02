@@ -762,27 +762,33 @@ Container 2
 
 <a id="Sub-Actions"></a>
 <Details>
-<Summary>Sub-Actions</Summary>
+<Summary>Под-действия (Sub-Actions)</Summary>
 <br>
 
-SubActions are designed to eliminate code duplication in Actions. Don't get confused! SubActions do not replace Tasks.
+ПодДействия (SubActions) предназначены для устранения дублирования кода в Действиях (Actions). Не запутайтесь! ПодДействия (SubActions) не заменяют Задачи (Tasks).
 
-While Tasks allows Actions to share a piece of functionality. SubActions allows Actions to share a sequence of Tasks.
+В то время как Задачи (Tasks) позволяют Действиям (Actions) совместно использовать часть функциональности. 
+ПодДействия (SubActions) позволяют Действиям (Actions) совместно использовать серию Задач.
 
-The SubActions are created to solve a problem. The problem is:
-Sometimes you need to reuse a big chunk of business logic in multiple Actions. That chunk of code is already calling some Tasks. *(Remember a Task SHOULD NOT call other Tasks)* so how shall you reuse that chunk of code without creating a Task! The solution is create a SubAction.
+ПодДействия (SubActions) созданы для решения проблемы. Проблемой является:
+Иногда вам нужно повторно использовать большой кусок бизнес-логики в нескольких Действиях. 
+Этот кусок кода уже вызывает некоторые Задачи (Tasks). *(Помните, что Задача НЕ ДОЛЖНА вызывать другие Задачи)*, 
+так как же вам повторно использовать этот фрагмент кода без создания Задачи! Решение - создать ПодДействие (SubAction).
 
-Detailed Example: assuming an Action `A1` is calling Task1, Task2 and Task3. And another Action `A2` is calling Task2, Task3, Task4 and Task5. Notice both Actions are calling Tasks 2 and 3. To eliminate code duplication we can create a SubAction that contains all the common code between both Actions.
+Подробный пример: предполагается, что действие A1 вызывает Task1, Task2 и Task3. И еще одно действие A2 вызывает Task2, Task3, Task4 и Task5. 
+Обратите внимание, что оба Действия вызывают Задачи (Tasks) 2 и 3. Чтобы исключить дублирование кода, мы можем создать ПодДействие, которое содержит весь общий код между обоими Действиями.
 
-#### Principles:
-- Sub-Actions MUST call Tasks. If a Sub-Actions is doing all the business logic, without the help of at least 1 Tasks, it probably shouldn't be a Sub-Action but a Task instead.
-- A Sub-Action MAY retrieves data from Tasks and pass data to another Task.
-- A Sub-Action MAY call multiple Tasks. (They can even call Tasks from other Containers as well!).
-- Sub-Actions MAY return data to the Action.
-- Sub-Action SHOULD NOT return a response. (the Controller job is to return a response).
-- Sub-Action SHOULD NOT call another Sub-Action. (try to avoid that as much as possible).
-- Sub-Action SHOULD be used from Actions. However, they can be used from Events, Commands and/or other Classes. But they SHOULD NOT be used from Controllers or Tasks.
-- Every Sub-Action SHOULD have only a single function named `run()`.
+#### Принципы:
+- ПодДействия (Sub-Actions) ДОЛЖНЫ вызывать Задачи (Tasks). Если ПодДействия выполняют всю бизнес-логику без помощи хотя бы одной Задачи (Task), 
+вероятно, это должно быть не вспомогательное действие, а Задача (Task).
+- ПодДействие (Sub-Action) МОЖЕТ извлекать данные из Задач (Tasks) и передавать данные в другую Задачу (Task).
+- ПодДействие МОЖЕТ вызывать несколько Задач (Tasks). (Они даже могут вызывать Задачи из других Контейнеров!).
+- ПодДействия МОГУТ возвращать данные в Действие (Action).
+- ПодДействие НЕ ДОЛЖНО возвращать ответ (response). (задача Контроллера - вернуть ответ).
+- ПодДействие НЕ ДОЛЖНО вызывать другое ПодДействие. (старайтесь избегать этого насколько возможно).
+- ПодДействие ДОЛЖНО использоваться из Действия (Action). Однако их можно использовать из Событий (Events), Команд (Commands) и / или других классов. 
+Но их НЕ СЛЕДУЕТ использовать из Контроллеров или Задач (Tasks).
+- Каждое ПодДействие (Sub-Action) ДОЛЖНО иметь только одну функцию с именем run ().
 
 ***
 
