@@ -599,30 +599,39 @@ Container 2
 
 <a id="Tasks"></a>
 <Details>
-<Summary>Tasks</Summary>
+<Summary>Задачи (Tasks)</Summary>
 <br>
 
-The Tasks are the classes that hold the shared business logic between multiple Actions accross different Containers.
+Задачи (Tasks) - это классы, которые содержат общую бизнес-логику для нескольких Действий (Actions) в разных Контейнерах.
 
-Every Task is responsible for a small part of the logic.
+Каждая Задача (Task) отвечает за небольшую часть логики.
 
-Tasks are optional, but in most cases you find yourself in need for them.
+Задачи (Tasks) не являются обязательными, но в большинстве случаев они вам нужны.
 
-Example: if you have Action 1 that needs to find a record by its ID from the DB, then fires an Event.
-And you have an Action 2 that needs to find the same record by its ID, then makes a call to an external API.
-Since both actions are performing the "find a record by ID" logic, we can take that business logic and put it in it's own class, that class is the Task. This Task is now reusable by both Actions and any other Action you might create in the future.
+Пример: если у вас есть Действие (Action) 1, которому нужно найти запись по ее идентификатору в БД, потом запускается Событие. 
+И у вас есть Действие 2, которому необходимо найти ту же запись по ее идентификатору, а затем выполнить вызов внешнего API. 
+Поскольку оба Действия выполняют логику «найти запись по идентификатору», мы можем взять эту бизнес-логику и поместить ее в собственный класс, этот класс является Задачей (Task). 
+Эту Задачу (Task) теперь можно использовать в обоих Действиях (Actions), а также и в любых других Действиях, которые вы можете создать в будущем.
 
-The rule is, whenever you see the possibility of reusing a piece of code from an Action, you should put that piece of code in a Task. Do not blindly create Tasks for everything, you can always start with writing all the business logic in an Action and only when you need to reuse it, create an a dedicated Task for it. (Refactoring is essential to adapt to the code growth).
+Правило состоит в том, что всякий раз, когда вы видите возможность повторного использования фрагмента кода из действия, 
+вы должны поместить этот фрагмент кода в Задачу (Task). Не создавайте Задачи вслепую для всего, вы всегда можете начать с написания всей бизнес-логики в Действии (Action), 
+и только когда вам нужно повторно использовать ее, создайте для нее специальную Задачу. (Рефакторинг необходим для адаптации к росту кода).
 
-#### Principles:
-- Every Task SHOULD have a single responsibility (job).
-- A Task MAY receive and return Data. (Task SHOULD NOT return a response, the Controller's job is to return a response).
-- A Task SHOULD NOT call another Task. Because that will takes us back to the Services Architecture and it's a big mess.
-- A Task SHOULD NOT call an Action. Because your code wouldn't make any logical sense then!
-- Tasks SHOULD only be called from Actions. (They could be called from Actions of other Containers as well!).
-- Tasks usually have a single function `run()`. However, they can have more functions with explicit names if needed. *Making the Task class replace the ugly concept of function flags.* Example: the `FindUserTask` can have 2 functions `byId` and `byEmail`, **all internal functions MUST call the `run` function**. In this example the `run` can be called at the end of both funtions, after appending Criteria to the repository.
-- A Task SHOULD NOT be called from Controller. Because this leads to non-documented features in your code. It's totally fine to have a lot of Actions "example: `FindUserByIdAction` and `FindUserByEmailAction` where both Actions are calling the same Task" as well as it's totally fine to have single Action `FindUserAction` making a decision to which Task it should call.
-- A Task SHOULD NOT accept a Request object in any of its functions. It can take anything in its funtions parameters but never a Request object. This will keep free to use from anwyhere, and can be tested independently.
+#### Принципы:
+- Каждая Задача (Task) ДОЛЖНА иметь единственную ответственность (работу).
+- Задача (Task) МОЖЕТ получать и возвращать данные. (Задача НЕ ДОЛЖНА возвращать ответ (response), задача Контроллера - вернуть ответ).
+- Задача НЕ ДОЛЖНА вызывать другую задачу. Потому что это вернет нас к архитектуре Служб (Services Architecture), а это большой беспорядок.
+- Задача НЕ ДОЛЖНА вызывать Действие (Action). Потому что тогда ваш код не будет иметь никакого логического смысла!
+- Задачи (Tasks) ДОЛЖНЫ вызываться только из Действий (Actions). (Они также могут было вызваны из Действий других Контейнеров!).
+- Задачи (Tasks) обычно имеют одну функцию `run ()`. Однако при необходимости у них может быть больше функций с явными именами. 
+*Заставить класс Task заменить уродливую концепцию флагов функций.* 
+Пример: `FindUserTask` может иметь 2 функции `byId` и `byEmail`, **все внутренние функции ДОЛЖНЫ вызывать функцию `run`.** 
+В этом примере `run` может быть вызван в конце обеих функций после добавления Критериев в репозиторий.
+- Задача НЕ МОЖЕТ вызываться из Контроллера. Потому что это приводит к появлению недокументированных функций в вашем коде. 
+Совершенно нормально иметь много Действий (Actions), "например: `FindUserByIdAction` и `FindUserByEmailAction`, где оба действия вызывают одну и ту же задачу", 
+а также совершенно нормально иметь одно действие `FindUserAction`, принимающее решение, какая Задача (Task) должна быть вызывана.
+- Задача (Task) НЕ ДОЛЖНА принимать объект Запроса (Request) ни в одной из своих функций. Она может принимать любые параметры функций, но не объект Request. 
+Она (Задача) может свободно использоваться везде, и её можно будет протестировать независимо.
 
 ***
 
