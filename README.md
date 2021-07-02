@@ -97,7 +97,7 @@ Porto - отличный вариант для средних и крупных 
 
 
 
-### Visual Overview
+### Визуальный обзор
 
 ![](/assets/porto_visual_diagram.png)
 
