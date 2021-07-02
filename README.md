@@ -1151,7 +1151,7 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
 </table>
 
 <a id="Author"></a>
-## Русский перевод
+## Русский перевод (примерный)
 
 <table>
   <tbody>
@@ -1160,6 +1160,8 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
             <img width="125" height="125" src="https://avatars.githubusercontent.com/u/9033145?v=4">
             <br>
             <strong>Dmitry Nazarov</strong>
+            <br>
+            Github: <a href="https://github.com/dnsoftware</a>
         </td>
      </tr>
   </tbody>
