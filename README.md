@@ -807,9 +807,9 @@ Container 2
 
 
 <a id="Optional-Components"></a>
-## 2) Optional Components
+## 2) Дополнительные Компоненты
 
-You can add these Components when you need them, based on your App needs, however some of them are highly recommended:
+Вы можете добавлять эти Компоненты, когда они вам нужны, в зависимости от потребностей вашего приложения, однако некоторые из них настоятельно рекомендуются:
 
 Tests - Events - Listeners - Commands - Migrations - Seeders - Factories - Middlewares - Repositories - Criteria - Policies - Service Providers - Contracts - Traits - Jobs - Values - Transporters - Mails - Notifications...
 
@@ -825,9 +825,9 @@ Tests - Events - Listeners - Commands - Migrations - Seeders - Factories - Middl
 
 
 <a id="Typical-Container-Structure"></a>
-## Typical Container Structure
+## Типичная Структура Контейнера
 
-> A Container with a list of Main and Optional Components.
+> Контейнер со списком основных и дополнительных Компонентов.
 
 ```
 Container
@@ -891,9 +891,9 @@ Container
 
 
 <a id="Quality-Attributes"></a>
-## Porto Quality Attributes
+## Атрибуты качества Porto
 
-> The benefits of using Porto.
+> Преимущества использования Porto.
 
 
 
@@ -905,18 +905,18 @@ Container
 
 
 <Details>
-<Summary>Modularity & Reusability</Summary>
+<Summary>Модульность и Возможность повторного использования</Summary>
 <br>
 
-In Porto, your application business logic lives in Containers. Porto Containers are similar in nature to the Modules *(from the Modular architecture)* and Domains *(from the DDD architecture)*.
+В Porto бизнес-логика вашего приложения живет в Контейнерах. Контейнеры Porto похожи по своей природе на модули *(из модульной архитектуры)* и домены *(из архитектуры DDD)*.
 
-Containers can depend on other Containers, similar to how a layer can depend on other layers in a layered architecture.
+Контейнеры могут зависеть от других Контейнеров, подобно тому, как слой может зависеть от других слоев в многоуровневой архитектуре.
 
-Porto's rules and guidelines minimizes and defines the dependecies directions between Containers, to avoid circular references between them.
+Правила и рекомендации Porto минимизируют и определяют направления зависимостей между контейнерами, чтобы избежать циклических ссылок между ними.
 
-And it allows the grouping of related Containers into sections, in order to reuse them together in different projects. *(each Section contains a reusable portion of your application business logic).*
+И это позволяет группировать связанные Контейнеры в разделы, чтобы повторно использовать их вместе в разных проектах. *(каждый раздел содержит многократно используемую часть бизнес-логики вашего приложения).*
 
-In terms of dependency management, the developer is free to move each Container to its own repository or keep all Containers together under single repository.
+Что касается управления зависимостями, разработчик может свободно перемещать каждый Контейнер в свой собственный репозиторий или хранить все Контейнеры вместе в одном репозитории.
 
 ***
 
@@ -932,15 +932,15 @@ In terms of dependency management, the developer is free to move each Container 
 
 
 <Details>
-<Summary>Maintainability & Scalability</Summary>
+<Summary>Удобство сопровождения и Масштабируемость</Summary>
 <br>
 
-Porto aim to reduce maintance cost by saving developers time.
-It's structured in a way to insure code decoupling, and forces consistency which all contribute to its maintainability.
+Porto стремится снизить затраты на обслуживание за счет экономии времени разработчиков. 
+Он структурирован таким образом, чтобы обеспечить разделение кода и обеспечить согласованность, что способствует удобству его сопровождения.
 
-Having a single function per class to describe a functionality, makes adding and removing features an easy process.
+Наличие единственной функции для каждого класса для описания функциональности упрощает процесс добавления и удаления функций.
 
-Porto has a very organized code base and a zero code decoupling. In addition to clear development workflow with predefined data flow and dependencies directions. That all contributes to its scalability.
+Porto имеет очень организованную кодовую базу и нулевую развязку кода. В дополнение к чистому рабочему процессу разработки с предопределенными направлениями потока данных и зависимостей. Все это способствует его масштабируемости.
 
 ***
 
@@ -956,17 +956,17 @@ Porto has a very organized code base and a zero code decoupling. In addition to 
 
 
 <Details>
-<Summary>Testability & Debuggability</Summary>
+<Summary>Тестируемость и отлаживаемость</Summary>
 <br>
 
-Extremely adhering to the single responsibility principle by having single function per class, results in having super slim classes, which leads to easier testability.
+Чрезвычайное соблюдение принципа единой ответственности за счет наличия единственной функции для каждого класса приводит к появлению сверхтонких классов, что упрощает тестируемость.
 
-In Porto each component expect the same type of input and output, which makes testing, mocking and stabbing very simple.
+В Porto каждый компонент ожидает одного и того же типа ввода и вывода, что упрощает тестирование, имитирование и подделку (stabbing).
 
-The Porto structure itself makes writing automated tests a smooth process. As it has a `tests` folder at the root of each Container for contaning the unit tests of your Tasks.
-And a `tests` folder in each UI folder for contaning the functional tests (for testing each UI's separately).
+Сама структура Porto делает написание автоматических тестов плавным процессом. Поскольку у него есть папка `tests` в корне каждого Контейнера для размещения там модульных тестов ваших Задач. 
+И папка `tests` в каждой папке пользовательского интерфейса для размещения там функциональных тестов (для тестирования каждого пользовательского интерфейса отдельно).
 
-The secret of making the testing and debugging easy, is not only in the organization of the tests and pre defined responsiblity of the components but also in the decoupling of your code.
+Секрет упрощения тестирования и отладки заключается не только в организации тестов и заранее определенной ответственности компонентов, но и в разделении вашего кода.
 
 ***
 
@@ -982,19 +982,19 @@ The secret of making the testing and debugging easy, is not only in the organiza
 
 
 <Details>
-<Summary>Adaptability & Evolvability</Summary>
+<Summary>Адаптивность и Эволюционируемость</Summary>
 <br>
 
-With Porto you can easily accommodate future changes with the least amount of efforts.
+С Porto вы можете легко приспособиться к будущим изменениям с минимальными усилиями.
 
-Let's assume you have a web app that serves HTML and recently you decided that you need to have a Mobile app, hence you need an API.
+Предположим, у вас есть веб-приложение, обслуживающее HTML, и недавно вы решили, что вам нужно мобильное приложение, поэтому вам нужен API.
 
-Porto has pluggable UI's (WEB, API & CLI) and this allows writting the business logic of your application first, then implementing a UI to interact with your code. 
+Porto имеет подключаемый пользовательский интерфейс (WEB, API и CLI), и это позволяет сначала написать бизнес-логику вашего приложения, а затем реализовать пользовательский интерфейс для взаимодействия с вашим кодом.
 
-This gives the flexibility to adding interfaces whenever needed and adapting to future changes, with the least effort possible. 
+Это дает гибкость для добавления интерфейсов по мере необходимости и адаптации к будущим изменениям с наименьшими усилиями.
 
-it is all possible because the Actions are the central organizing principle "not the controller" which are shared across multiple UI's.
-And the UI's are separated from the application business logic and separated from each others within each Container.
+все это возможно, потому что Действия являются центральным организационным принципом «не контроллер», который совместно используется несколькими пользовательскими интерфейсами. 
+И пользовательский интерфейс отделен от бизнес-логики приложения и отделен друг от друга в каждом контейнере.
 
 ***
 
@@ -1010,14 +1010,16 @@ And the UI's are separated from the application business logic and separated fro
 
 
 <Details>
-<Summary>Usability & Learnability</Summary>
+<Summary>Удобство использования и Обучаемость</Summary>
 <br>
 
-Porto makes it super easy to locate any feature/functionality. And to understand what's happening inside it.
+Porto позволяет очень легко найти любую особенность / функциональность. И понять, что внутри нее творится.
 
-That due to the usage of the domain expert language when naming the classes "components". As well as the single function per class golden rule. Which allows you to find any Use Case (`Action`) in your code by just browsing the files.
+Это связано с использованием экспертного языка предметной области при именовании классов «компоненты». А также золотое правило единственной функции для каждого класса. 
+Это позволяет вам найти любой вариант использования (Действие (Action)) в вашем коде, просто просматривая файлы.
 
-Porto promises that you can find any feature implementation in less than 3 seconds! (example: if you are looking for where the user address is being validated - just go to the Address Container, open the list of Actions and search for ValidateUserAddressAction).
+Porto обещает, что вы найдете реализацию любой функции менее чем за 3 секунды! (пример: если вы ищете, где проверяется адрес пользователя - просто перейдите в контейнер адресов, 
+откройте список действий и найдите ValidateUserAddressAction).
 
 ***
 
@@ -1033,14 +1035,14 @@ Porto promises that you can find any feature implementation in less than 3 secon
 
 
 <Details>
-<Summary>Extensibility & Flexibility</Summary>
+<Summary>Расширяемость и Гибкость</Summary>
 <br>
 
-Porto's takes future growth into consideration and it ensures your code remains maintainable no matter what the project size becomes. 
+Porto принимает во внимание будущий рост и гарантирует, что ваш код останется обслуживаемым независимо от размера проекта.
 
-It achieves this by its modular structure, separation of concerns and the organized coupling between the internal classes "Components".
+Это достигается за счет своей модульной структуры, разделения задач и организованной связи между внутренними классами «Компоненты».
 
-This allows modifications to be made without undesirable side effects.
+Это позволяет вносить изменения без нежелательных побочных эффектов.
 
 ***
 
@@ -1056,12 +1058,12 @@ This allows modifications to be made without undesirable side effects.
 
 
 <Details>
-<Summary>Agility & Upgradability</Summary>
+<Summary>Гибкость и Возможность модернизации</Summary>
 <br>
 
-Porto gives the ability to move quickly and easily.
+Porto дает возможность двигаться быстро и легко.
 
-It's easy to make framework upgrades due to the complete separation between the App and the framework code through the Ship layer.
+Обновления фреймворка легко выполнять благодаря полному разделению между приложением и кодом фреймворка на уровне «Корабль».
 
 ***
 
@@ -1081,18 +1083,18 @@ It's easy to make framework upgrades due to the complete separation between the 
 
 <a id="Implementations-Projects"></a>
 
-# Implementations
+# Реализации
 
-> Feel free to list your implementation here.
+> Не стесняйтесь перечислять здесь свою реализацию.
 
-List of projects implementing the Porto architecture.
+Список проектов, реализующих архитектуру Porto.
 
 - **PHP**
 	- **Laravel** 
-		- [**Apiato**](http://apiato.io/) **(By the Porto creator)** A PHP Framework for building scalable API's on top of Laravel.
-		- [**Laravel Large Project**](https://github.com/stasyanko/laravel-large-project) An example project to show how to build large projects with Porto.
+		- [**Apiato**](http://apiato.io/) **(От создателя Porto)* PHP Framework для создания масштабируемых API поверх Laravel.
+		- [**Laravel Large Project**](https://github.com/stasyanko/laravel-large-project) Пример проекта, показывающий, как создавать большие проекты с Porto.
 	- **Zend Expressive**
-		- [**Expressive Porto**](https://github.com/lpj145/expressive-porto) An implementation of the Porto architecture with Zend Expressive.
+		- [**Expressive Porto**](https://github.com/lpj145/expressive-porto) Реализация архитектуры Porto с Zend Expressive.
 - **JavaScript**
 - **Python**
 - **Ruby**
@@ -1130,7 +1132,7 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
 
 
 <a id="Author"></a>
-## Author
+## Автор
 
 <table>
   <tbody>
@@ -1148,6 +1150,20 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
   </tbody>
 </table>
 
+<a id="Author"></a>
+## Русский перевод
+
+<table>
+  <tbody>
+     <tr>
+        <td align="center" valign="top">
+            <img width="125" height="125" src="https://avatars.githubusercontent.com/u/9033145?v=4">
+            <br>
+            <strong>Dmitry Nazarov</strong>
+        </td>
+     </tr>
+  </tbody>
+</table>
 
 
 
