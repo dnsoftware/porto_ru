@@ -1161,7 +1161,7 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
             <br>
             <strong>Dmitry Nazarov</strong>
             <br>
-            Github: <a href="https://github.com/dnsoftware</a>
+            <a href="https://github.com/dnsoftware">Github</a>
         </td>
      </tr>
   </tbody>
