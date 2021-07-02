@@ -528,19 +528,19 @@ Container 2
 
 <a id="Requests"></a>
 <Details>
-<Summary>Requests</Summary>
+<Summary>Запросы (Requests)</Summary>
 <br>
 
-Requests mainly serve the user input in the application. And they are very useful to automatically apply the Validation and Authorization rules.
+Запросы в основном служат для ввода данных пользователем в приложение. И они очень полезны для автоматического применения правил проверки и авторизации.
 
-Requests are the best place to apply validations, since the validations rules will be related to every request.
-Requests can also check the Authorization, e.g. check if this user has access to this controller function.
-*(Example: check if a specific user owns a product before deleting it, or check if this user is an admin to edit something).*
+Запросы - лучшее место для применения валидации, поскольку правила валидации будут связаны с каждым запросом. 
+Запросы также могут проверять Авторизацию, например проверить, есть ли у этого пользователя доступ к этой функции контроллера. 
+*(Пример: проверить, владеет ли конкретный пользователь продуктом перед его удалением, или проверить, является ли этот пользователь администратором, чтобы что-то редактировать).*
 
-#### Principles:
-- A Request MAY hold the Validation / Authorization rules.
-- Requests SHOULD only be injected in Controllers. Once injected they automatically check if the request data matches the validation rules, and if the request input is not valid an Exception will be thrown.
-- Requests MAY also be used for authorization, they can check if the user is authorized to make a request.
+#### Принципы:
+- Запрос МОЖЕТ содержать правила Валидации / Авторизации.
+- Запросы ДОЛЖНЫ внедряться только в Контроллеры. После внедрения они автоматически проверяют, соответствуют ли данные запроса правилам проверки, и если ввод запроса не валидный, будет выброшено Исключение.
+- Запросы МОГУТ также использоваться для авторизации, они могут проверять, авторизован ли пользователь для выполнения запроса.
 
 ***
 
@@ -557,31 +557,32 @@ Requests can also check the Authorization, e.g. check if this user has access to
 
 <a id="Actions"></a>
 <Details>
-<Summary>Actions</Summary>
+<Summary>Действия (Actions)</Summary>
 <br>
 
-Actions represent the Use Cases of the Application *(the actions that can be taken by a User or a Software in the Application)*.
+Действия (Actions) представляют собой сценарии использования (Use Cases) Приложения *(действия, которые могут быть предприняты Пользователем или Программным обеспечением в Приложении).*
 
-Actions CAN hold business logic or/and they orchestrate the Tasks to perform the business logic.
+Действия МОГУТ содержать бизнес-логику или / и организуют Задачи (Tasks) для выполнения бизнес-логики.
 
-Actions take data structures as inputs, manipulates them according to the business rules internally or through some Tasks, then output a new data structures.
+Действия (Actions) принимают структуры данных в качестве входных данных, манипулируют ими в соответствии с бизнес-правилами внутри компании или с помощью некоторых Задач (Tasks), а затем выводят новые структуры данных.
 
-Actions SHOULD NOT care how the Data is gathered, or how it will be represented.
+Действия (Actions) НЕ ДОЛЖНЫ заботиться о том, как собираются Данные или как они будут представлены.
 
-By just looking at the Actions folder of a Container, you can determine what Use Cases (features) your Container provides.
-And by looking at all the Actions you can tell what an Application can do.
+Просто взглянув на папку «Действия» (Actions) Контейнера, вы можете определить, какие сценарии использования (функции) предоставляет ваш Контейнер. 
+И глядя на все Действия (Actions), вы можете сказать, что может делать Приложение.
 
-#### Principles:
-- Every Action SHOULD be responsible for doing a single Use Case in the Application.
-- An Action MAY retrieves data from Tasks and pass data to another Task.
-- An Action MAY call multiple Tasks. (They can even call Tasks from other Containers as well!).
-- Actions MAY return data to the Controller.
-- Actions SHOULD NOT return a response. (The Controller's job is to return a response).
-- An Action SHOULD NOT call another Action (If you need to reuse a big chunk of business logic in multiple Actions, and this chunk is calling some Tasks, you can create a SubAction). See the SubAction section below.
-- Actions are mainly used from Controllers. However, they can be used from Events Listeners, Commands and/or other Classes. But they SHOULD NOT be used from Tasks.
-- Every Action SHOULD have only a single function named `run()`.
-- The Action main function `run()` can accept a Request Object in the parameter.
-- Actions are responsible of handling all expected Exceptions.
+#### Принципы:
+- Каждое Действие (Action) ДОЛЖНО отвечать за выполнение одного варианта использования в Приложении.
+- Действие МОЖЕТ извлекать данные из Задач (Tasks) и передавать данные другой Задаче (Task).
+- Действие МОЖЕТ вызывать несколько Задач (Tasks). (Они даже могут вызывать Задачи (Tasks) из других Контейнеров!).
+- Действия МОГУТ возвращать данные Контроллеру.
+- Действия НЕ ДОЛЖНЫ возвращать ответ. (Задача Контроллера - вернуть ответ).
+- Действие НЕ ДОЛЖНО вызывать другое Действие (если вам нужно повторно использовать большой кусок бизнес-логики из нескольких Действий, 
+и этот фрагмент вызывает несколько Задач, вы можете создать ПодДействие (SubAction). См. Раздел SubAction ниже.
+- Действия в основном используются из Контроллеров. Однако их можно использовать из Слушивателей событий (Listeners), Команд и / или других Классов. Но их НЕ СЛЕДУЕТ использовать из Задач.
+- Каждое действие ДОЛЖНО иметь только одну функцию с именем run ().
+- Основная функция Действия `run ()` может принимать объект Запроса в параметре. (что странно, прим. перев.)
+- Действия (Actions) несут ответственность за обработку всех ожидаемых Исключений (Exceptions).
 
 ***
 
