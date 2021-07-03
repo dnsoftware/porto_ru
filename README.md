@@ -1159,7 +1159,7 @@ For feedbacks, questions, or suggestions? We are on [**Slack**](https://slackin-
         <td align="center" valign="top">
             <img width="125" height="125" src="https://avatars.githubusercontent.com/u/9033145?v=4">
             <br>
-            <strong>Dmitry Nazarov</strong>
+            <strong>Dmitry N</strong>
             <br>
             <a href="https://github.com/dnsoftware">Github</a>
         </td>
